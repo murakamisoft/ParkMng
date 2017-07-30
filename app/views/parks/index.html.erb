@@ -1,0 +1,59 @@
+<nav class="navbar navbar-fixed-top navbar-inverse">
+   <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">公園管理システム</a>
+    </div>
+  </div><!-- /.nav-collapse -->
+</div><!-- /.container -->
+</nav><!-- /.navbar -->
+<br>
+<br>
+<br>
+<div class="container">
+<p id="notice"><%= notice %></p>
+
+<h1>公園一覧</h1>
+
+<%= link_to '新規作成', new_park_path, :class => "btn btn-default" %>
+<br>
+<br>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>名前</th>
+      <th>住所</th>
+      <th>遊具</th>
+      <th>メモ</th>
+      <th>画像</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @parks.each do |park| %>
+      <tr>
+        <td><%= park.name %></td>
+        <td><%= park.position %></td>
+        <td><%= park.play %></td>
+        <td><%= park.memo %></td>
+        <td><%= park.picture %></td>
+        <td><%= link_to '確認', park ,:class => "btn btn-primary"  %></td>
+        <td><%= link_to '編集', edit_park_path(park), :class => "btn btn-info"  %></td>
+        <td><%= link_to '削除', park, method: :delete, data: { confirm: '削除してもよろしいですか?' }, :class => "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+
+</div>
